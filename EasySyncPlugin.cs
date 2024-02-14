@@ -1,13 +1,14 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using HarmonyLib;
 
 namespace EasySync
 {
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
-    [BepInDependency(YetAnotherLethalLibrary.PluginInfo.PLUGIN_GUID)]
     [BepInDependency("io.github.CSync")]
     public class EasySyncPlugin : BaseUnityPlugin
     {
+        private static Harmony _harmony = new Harmony(PluginInfo.PLUGIN_GUID);
         public static EasySyncPlugin instance;
         private ManualLogSource logSource => Logger;
 
@@ -15,7 +16,7 @@ namespace EasySync
         {
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
             instance = this;
-            SyncManager.Initialize();
+            _harmony.PatchAll(typeof(Patches));
         }
         
         internal static bool ConditionLog(string message, bool condition = true, LogLevel logLevel = LogLevel.Info)

@@ -9,6 +9,10 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy C:\Main\Projects\LethalCompany\EasySync\bin\Debug\netstandard2.1\EasySync.dll C:\Users\user\AppData\Roaming\r2modmanPlus-local\LethalCompany\profiles\Dev\BepInEx\plugins\Dreadrith-EasySync"/>
+  </Target>
+
   <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" />
@@ -29,9 +33,6 @@
     </Reference>
     <Reference Include="Unity.Netcode.Runtime">
       <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.Netcode.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="YetAnotherLethalLibrary">
-      <HintPath>..\..\..\..\Users\user\AppData\Roaming\r2modmanPlus-local\LethalCompany\profiles\Dev\BepInEx\plugins\Dreadrith-YetAnotherLethalLibrary\YetAnotherLethalLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

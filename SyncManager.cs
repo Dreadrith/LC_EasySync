@@ -5,7 +5,6 @@ using Unity.Collections;
 using Unity.Netcode;
 using static EasySync.EasySyncPlugin;
 using LogLevel = BepInEx.Logging.LogLevel;
-using YetAnotherLethalLibrary;
 
 namespace EasySync;
 
@@ -23,19 +22,13 @@ public static class SyncManager
 		return container;
 	}
 
-	internal static void Initialize()
-	{
-		GameManager.OnClientPlayerConnected += SyncAllInstances;
-		GameManager.OnClientPlayerDisconnected += RevertSyncAllInstances;
-	}
-
-	private static void SyncAllInstances(object _)
+	internal static void SyncAllInstances()
 	{
 		foreach(var i in instancesToSync.Values)
 			i.BeginSync();
 	}
 
-	private static void RevertSyncAllInstances()
+	internal static void RevertSyncAllInstances()
 	{
 		foreach(var i in instancesToSync.Values)
 			i.RevertSync();
