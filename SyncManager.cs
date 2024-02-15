@@ -21,6 +21,12 @@ public static class SyncManager
 		instancesToSync.Add(GUID, container);
 		return container;
 	}
+	
+	public static void UnregisterFromSyncing(string GUID)
+	{
+		if (instancesToSync.ContainsKey(GUID))
+			instancesToSync.Remove(GUID);
+	}
 
 	internal static void SyncAllInstances()
 	{
