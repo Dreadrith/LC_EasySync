@@ -8,7 +8,7 @@ namespace EasySync
     [BepInDependency("io.github.CSync")]
     public class EasySyncPlugin : BaseUnityPlugin
     {
-        private static Harmony _harmony = new Harmony(PluginInfo.PLUGIN_GUID);
+        private static readonly Harmony _harmony = new Harmony(PluginInfo.PLUGIN_GUID);
         public static EasySyncPlugin instance;
         private ManualLogSource logSource => Logger;
 
