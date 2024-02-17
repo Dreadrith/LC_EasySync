@@ -17,6 +17,13 @@ public static class SyncManager
 		if (ConditionLog("Cannot register a null instance for syncing!", instance == null, LogLevel.Error)) return null;
 		var container = new SyncedInstanceContainer(instance, GUID);
 		if (ConditionLog($"Could not register instance ({instance}) of type ({instance.GetType().Name}) for syncing! Does it inherit from SyncedInstance from CSync?", !container.isValid, LogLevel.Error)) return null;
+		
+		if (instancesToSync.TryGetValue(GUID, out _))
+		{
+			ConditionLog($"An instance with GUID {GUID} was already registered!", true, LogLevel.Warning);
+			return null;
+		}
+		
 		container.InitInstance();
 		instancesToSync.Add(GUID, container);
 		return container;
