@@ -1,4 +1,4 @@
-# Notices
+# Notice
 CSync is now able to fulfill the same purpose EasySync was made for so it is now archived.
 
 # Overview
