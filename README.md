@@ -1,3 +1,6 @@
+# Notices
+CSync is now able to fulfill the same purpose EasySync was made for so it is now archived.
+
 # Overview
 EasySync aims to be the easiest way of syncing configuration between host and players (clients) for Lethal Company so that you can focus on creating the meat of your mod. All you'd have to do is to write your config class!  
 
